@@ -1,0 +1,56 @@
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @blog.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @blog.desc %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @blog.created_by %>
+</p>
+
+
+
+
+
+<h2>Comments</h2>
+<% @blog.comments.each do |comment| %>
+  <p>
+    <strong>Title:</strong>
+    <%= comment.title %>
+  </p>
+
+  <p>
+    <strong>id:</strong>
+    <%= comment.id %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.comment %>
+  </p>
+  
+   
+<% end %>
+
+
+<h2>Add a comment:</h2>
+<%= form_for([@blog, @blog.comments.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

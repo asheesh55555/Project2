@@ -17,10 +17,15 @@ def create
   @book = Book.new( book_params)
   @book.model_id  = current_model.id
   @book.save
+
   redirect_to @book
 end
  def show
     @book = Book.find(params[:id])
+
+    
+    # =begin@modelid=@book.model_id
+    # @model=Model.find(@modelid)=end
   end
 private
   def book_params

@@ -1,26 +1,23 @@
-<div class="container">
+<p id="notice"><%= notice %></p>
+
 <p>
   <strong>Title:</strong>
-  <%= @book.title %>
-</p>
- 
-<p>
-  <strong>Location:</strong>
-  <%= @book.location %>
-</p>
- 
-<p>
-  <strong>Created_by:</strong>
-  <%= @book.created_by %>
-</p>
- 
-<p>
-  <strong>Category_id:</strong>
-  <%= @book.category_id %>
+  <%= @product.title %>
 </p>
 
- <h2>Comments</h2>
-<% @book.comments.each do |comment| %>
+<p>
+  <strong>Desc:</strong>
+  <%= @product.desc %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @product.location %>
+</p>
+
+
+<h2>Comments</h2>
+<% @product.comments.each do |comment| %>
   <p>
     <strong>Title:</strong>
     <%= comment.title %>
@@ -35,18 +32,13 @@
     <strong>Comment:</strong>
     <%= comment.comment %>
   </p>
-  <!-- <p>
-   <%= @model.email %>
-   </p> -->
-   <p>
-    
-    <%= "hello email is #{comment.model.email}" %>
-  </p>
+  
+   
 <% end %>
 
 
 <h2>Add a comment:</h2>
-<%= form_for([@book, @book.comments.build]) do |f| %>
+<%= form_for([@product, @product.comments.build]) do |f| %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -59,4 +51,4 @@
     <%= f.submit %>
   </p>
 <% end %>
-</div>
+

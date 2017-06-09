@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608122603) do
+ActiveRecord::Schema.define(version: 20170609121158) do
+
+  create_table "blogs", force: :cascade do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.string   "created_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "model_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -38,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170608122603) do
     t.string   "role",                        default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "model_id"
   end
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
@@ -61,5 +71,14 @@ ActiveRecord::Schema.define(version: 20170608122603) do
 
   add_index "models", ["email"], name: "index_models_on_email", unique: true
   add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "model_id"
+  end
 
 end
