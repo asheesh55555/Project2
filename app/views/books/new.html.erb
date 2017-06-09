@@ -1,0 +1,29 @@
+
+<%= form_for :book, url: books_path do |f| %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+ <p>
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </p>
+
+  <p>
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </p>
+
+  <p>
+    <%= f.label :category_id %><br>
+   <%= f.collection_select :category_id, Category.order(:name),:id,:name%>
+  </p>
+
+
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

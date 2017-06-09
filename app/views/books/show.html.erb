@@ -1,0 +1,50 @@
+<div class="container">
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+ 
+<p>
+  <strong>Location:</strong>
+  <%= @book.location %>
+</p>
+ 
+<p>
+  <strong>Created_by:</strong>
+  <%= @book.created_by %>
+</p>
+ 
+<p>
+  <strong>Category_id:</strong>
+  <%= @book.category_id %>
+</p>
+
+ <h2>Comments</h2>
+<% @book.comments.each do |comment| %>
+  <p>
+    <strong>Title:</strong>
+    <%= comment.title %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.comment %>
+  </p>
+<% end %>
+
+
+<h2>Add a comment:</h2>
+<%= form_for([@book, @book.comments.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</div>
