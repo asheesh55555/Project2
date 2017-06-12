@@ -1,17 +1,24 @@
 class BlogsController < ApplicationController
 
-   before_action :authenticate_model! 
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+   
+  before_action :authenticate_model! , only: [:show,:new,:create]
 
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
+if current_model
+  @blogs =Blog.where(model_id: current_model.id)
+else
+   @blogs = Blog.all
+end
+
+   
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @blog = Blog.find(params[:id])
   end
 
   # GET /blogs/new
@@ -72,6 +79,6 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:name, :desc, :created_by)
+      params.require(:blog).permit(:name, :desc, :created_by, :category_id)
     end
 end

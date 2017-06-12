@@ -6,11 +6,19 @@ class BooksController < ApplicationController
   #applied in every module b/c application controller is the perent class of 
   #every controller class by default and this function will be inherite in 
   #every sub class controllers
-  before_action :authenticate_model! 
+  before_action :authenticate_model!,  only: [:show,:new,:create] 
 def new
 		
 	end
+def index
+if current_model
+  @books =Book.where(model_id: current_model.id)
+else
+   @books = Book.all
+end
 
+   
+  end
 
 def create
 	
